@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chronyd
+
 if [ ! -f /var/lib/samba/private/sam.ldb ]
 then
     if [[ -n $REALM && -n $DOMAIN && -n $ADMINPASS && -n $DNSFORWARDER ]]
@@ -19,5 +21,5 @@ else
     echo Starting Samba Domain Controller...
     cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
     cp /var/lib/samba/private/smb.conf /etc/samba
-    samba -F
+    samba -F -d10
 fi
